@@ -1,0 +1,200 @@
+
+:root {
+  font-family: "Segoe UI", sans-serif;
+  color: #f1f5f9;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background: transparent;
+  user-select: none;
+}
+
+.hud-shell {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: rgba(12, 17, 24, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Compact single-line header */
+
+.chat-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px 13px;
+
+  background: rgba(255, 255, 255, 0.025);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  -webkit-app-region: drag;
+}
+
+.contact-name {
+  font-size: 13px;
+  font-weight: 650;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.status-separator {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+}
+
+.contact-status {
+  font-size: 11px;
+  color: rgba(117, 214, 156, 0.9);
+}
+
+/* Conversation */
+
+.messages-container {
+  flex: 1;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 12px;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.message-row {
+  display: flex;
+  width: 100%;
+}
+
+.message-row.incoming {
+  justify-content: flex-start;
+}
+
+.message-row.outgoing {
+  justify-content: flex-end;
+}
+
+.message-bubble {
+  max-width: 88%;
+  padding: 8px 10px 7px;
+
+  border-radius: 10px;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.incoming .message-bubble {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-top-left-radius: 3px;
+}
+
+.outgoing .message-bubble {
+  background: rgba(20, 135, 91, 0.42);
+  border: 1px solid rgba(66, 220, 157, 0.12);
+  border-top-right-radius: 3px;
+}
+
+.message-text {
+  font-size: 13px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  user-select: text;
+}
+
+/* Timestamps appear only when hovering over a message. */
+
+.message-time {
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+
+  opacity: 0;
+  font-size: 9px;
+  line-height: 12px;
+  text-align: right;
+  color: rgba(230, 240, 245, 0.55);
+
+  transition:
+    opacity 120ms ease,
+    height 120ms ease,
+    margin 120ms ease;
+  pointer-events: none;
+}
+
+.message-bubble:hover .message-time {
+  height: 12px;
+  margin-top: 3px;
+  opacity: 1;
+}
+
+/* Minimal single-line composer */
+
+.message-composer {
+  flex-shrink: 0;
+  padding: 8px 10px;
+
+  background: rgba(10, 15, 22, 0.20);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.message-composer input {
+  display: block;
+  width: 100%;
+  height: 36px;
+
+  padding: 0 11px;
+
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  outline: none;
+
+  color: white;
+  background: rgba(255, 255, 255, 0.07);
+
+  font-family: inherit;
+  font-size: 12px;
+
+  user-select: text;
+  -webkit-app-region: no-drag;
+}
+
+.message-composer input::placeholder {
+  color: rgba(230, 240, 245, 0.45);
+}
+
+.message-composer input:focus {
+  border-color: rgba(61, 61, 61, 0.314);
+}

@@ -1,0 +1,32 @@
+
+# Dependencies
+node_modules/
+
+# Generated build output
+dist/
+out/
+release/
+
+# Logs and caches
+*.log
+*.log.*
+.eslintcache
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Machine-specific native messaging files
+native-bridge/host.exe
+native-bridge/com.whatsapp.hud.json
+
+# VS Code
+.vscode/settings.json
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini

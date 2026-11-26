@@ -1,0 +1,31 @@
+
+{
+  "manifest_version": 3,
+  "name": "WhatsApp HUD Connector",
+  "version": "1.0.0",
+  "description": "Connects WhatsApp Web to the WhatsApp Desktop HUD.",
+
+  "permissions": [
+    "nativeMessaging"
+  ],
+
+  "host_permissions": [
+    "https://web.whatsapp.com/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://web.whatsapp.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
